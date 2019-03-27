@@ -1,4 +1,5 @@
-import React, {Component} from 'react';
+import React from 'react';
+import './jugador.css';
 
 const jugadorRow = props => (
 
@@ -7,6 +8,7 @@ const jugadorRow = props => (
                 <td>{props.jugador.nombre}</td>
                 <td>{props.jugador.apellido}</td>
                 <td>{props.jugador.apodo}</td>
+                <td><button type="button" onClick={() => props.eliminarJugador(props.jugador.camiseta)} className="btn btn-danger"><i className="fa fa-trash"></i></button></td>
                 </tr>
 )
 

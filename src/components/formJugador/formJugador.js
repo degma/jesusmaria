@@ -16,12 +16,12 @@ class formJugador extends Component {
         this.posicionElRef = React.createRef();
         this.camisetaElRef = React.createRef();
     }
-
-    guardarJugador = () => {
+    
+    newJugador = () => {
         
         const nombre = this.nombreElRef.current.value;
         const apellido = this.apellidoElRef.current.value;
-        const apood = this.apodoElRef.current.value;
+        const apodo = this.apodoElRef.current.value;
         const dni = this.dniElRef.current.value;
         const nrosocio = this.nrosocioElRef.current.value;
         const fechanac = this.fechanacElRef.current.value;
@@ -30,16 +30,26 @@ class formJugador extends Component {
         const posicion = this.posicionElRef.current.value;
         const camiseta = this.camisetaElRef.current.value;
 
+        this.props.gJugador ({
+            nombre: nombre,
+            apellido: apellido,
+            apodo: apodo,
+            fecha_nac: fechanac,
+            dni: dni,
+            socio: nrosocio,
+            cel: celular,
+            camiseta: camiseta
+        });
+        
     }
     render() {
-        
         const roles = [
             { value: 'Arquero', label: 'Arquero' },
             { value: 'Defensor', label: 'Defensor' },
             { value: 'Volante', label: 'Volante' },
             { value: 'Delantero', label: 'Delantero' }
           ]
-
+        
         return (
             <div>
                 <div className="form-group col-md-12">
@@ -92,11 +102,11 @@ class formJugador extends Component {
                     </div>
                     <div className="form-group col-md-12">
                         <label htmlFor="inputName">Número Camiseta</label>
-                        <input type="text"  ref={this.camisetaElRef} id="name" className="form-control" placeholder="Nombre" />
+                        <input type="text" ref={this.camisetaElRef} id="name" className="form-control" placeholder="Nombre" />
                     </div>
                     <div className="form-group col-md-12 text-right pt-4">
                         <button type="button" className="btn btn-danger m-2" onClick={this.props.cancelar}>Cancelar</button>
-                        <button type="button" className="btn btn-success m-2" onClick={this.guardarJugador}>Guardar Jugador</button>
+                        <button type="button" className="btn btn-success m-2" onClick={this.newJugador}>Guardar Jugador</button>
                     </div>
                 </form>
 

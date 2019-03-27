@@ -10,11 +10,12 @@ const plantel = props => {
                         <th scope="col">First</th>
                         <th scope="col">Last</th>
                         <th scope="col">Handle</th>
+                        <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
                     {props.jugadores.map(jugador => 
-                        <Jugador jugador={jugador}/>
+                        <Jugador jugador={jugador} eliminarJugador={props.eJugador} key={jugador.id}/>
                     )}
                 </tbody>
             </table>

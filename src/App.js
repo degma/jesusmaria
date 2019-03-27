@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
 import Navigation from './components/navbar/Navigation';
 import './App.css';
 import PlantelPage from './pages/Equipo';
+import CobrarPage from './pages/Cobrar';
 
 class App extends Component {
   render() {
@@ -17,6 +18,7 @@ class App extends Component {
                   <Switch>
                     <Redirect from="/" to="/plantel" exact />
                     <Route path="/plantel" component={PlantelPage} />
+                    <Route path="/cobrar" component={CobrarPage} />
                   </Switch>
                 </div>
               </div>

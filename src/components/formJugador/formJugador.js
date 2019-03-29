@@ -5,6 +5,9 @@ import Select from 'react-select';
 class formJugador extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            ddPosicion: null
+        }
         this.nombreElRef = React.createRef();
         this.apellidoElRef = React.createRef();
         this.apodoElRef = React.createRef();
@@ -27,7 +30,6 @@ class formJugador extends Component {
         const fechanac = this.fechanacElRef.current.value;
         const email = this.emailElRef.current.value;
         const celular = this.celularElRef.current.value;
-        const posicion = this.posicionElRef.current.value;
         const camiseta = this.camisetaElRef.current.value;
 
         this.props.gJugador ({
@@ -36,11 +38,19 @@ class formJugador extends Component {
             apodo: apodo,
             fecha_nac: fechanac,
             dni: dni,
-            socio: nrosocio,
-            cel: celular,
-            camiseta: camiseta
+            nrosocio: nrosocio,
+            celular: celular,
+            camiseta: camiseta,
+            posicion: this.state.ddPosicion,
+            email: email
+
         });
         
+    }
+
+    changeSelectGender = (args) => {
+        console.log(args.value)
+        this.setState({ddPosicion:args.value})
     }
     render() {
         const roles = [

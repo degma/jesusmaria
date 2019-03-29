@@ -1,5 +1,5 @@
 import React from 'react';
-import './jugador.css';
+import './Jugador.css';
 
 const jugadorRow = props => (
 

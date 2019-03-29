@@ -10,12 +10,13 @@ const partidos = props => {
                         <th scope="col">Fecha #</th>
                         <th scope="col">Día</th>
                         <th scope="col">Vs</th>
+                        <th scope="col">Recaudación</th>
                         <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
                     {props.partidos.map(partido => 
-                        <Partido partido={partido} key={partido.id} cobraPartido={props.cobraPartido}/>
+                        <Partido partido={partido} key={partido.id_partido} cobraPartido={props.cobraPartido}/>
                     )}
                 </tbody>
             </table>

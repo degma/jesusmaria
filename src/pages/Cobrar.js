@@ -74,6 +74,12 @@ class Cobrar extends Component {
     cobrarJugadorHandler = (args) => {
         this.setState({ partidoFlag: 2, jugadorSeleccionado: args.id });
     }
+    componentWillMount(){
+        fetch("http://127.0.0.1:8080/partidos")
+        .then(response => response.json())
+        .then(data => this.setState({partidos: data}))
+        
+    }
 
     render() {
         return (

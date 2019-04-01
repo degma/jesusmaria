@@ -4,11 +4,10 @@ import Partido from './Partido';
 const partidos = props => {
         return(
             <React.Fragment>
-            <table className="table">
+            <table className="table table-sm">
                 <thead>
                     <tr>
                         <th scope="col">Fecha #</th>
-                        <th scope="col">Día</th>
                         <th scope="col">Vs</th>
                         <th scope="col">Recaudación</th>
                         <th scope="col"></th>

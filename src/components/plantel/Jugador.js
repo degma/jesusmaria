@@ -8,7 +8,7 @@ const jugadorRow = props => (
                 <td>{props.jugador.nombre}</td>
                 <td>{props.jugador.apellido}</td>
                 <td>{props.jugador.apodo}</td>
-                <td><button type="button" onClick={() => props.eliminarJugador(props.jugador)} className="btn btn-danger"><i className="fa fa-trash"></i></button></td>
+                <td><button type="button" onClick={() => props.eliminarJugador(props.jugador)} className="btn btn-danger" disabled="true"><i className="fa fa-trash"></i></button></td>
                 </tr>
 )
 

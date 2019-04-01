@@ -7,7 +7,7 @@ const listaJugadorCobrar = (props) => {
                 <tr>
                     <th scope="col">Jugador</th>
                     <th scope="col">Pagó</th>
-                    <th scope="col">Debe</th>
+                    <th scope="col">Deuda</th>
                     <th scope="col"></th>
                 
                 </tr>
@@ -15,10 +15,13 @@ const listaJugadorCobrar = (props) => {
             <tbody>
                 {props.jugadores.map(jugador =>
                     <tr key={jugador.id_jugador}>
-                        <td>{(+jugador.Pago >= jugador.Debe && jugador.Pago >0 ) ? (<i class="fa fa-check-circle text-success"></i>):("") } {jugador.apellido}, {jugador.nombre} ({jugador.apodo})</td>
+                        <td>{(jugador.Deuda && jugador.Pago >0 ) ? (<i class="fa fa-check-circle text-success"></i>):("") } {jugador.apellido}, {jugador.nombre} ({jugador.apodo})</td>
                         <td>${jugador.Pago}</td>
-                        <td>{(jugador.Pago - jugador.Debe) < 0 ? 
-                            (<p className="text-danger">${jugador.Pago - jugador.Debe}</p>):(<p className="text-success">${jugador.Pago - jugador.Debe}</p>)}
+                        <td>
+                            {(jugador.Deuda < 0) ? (<p className="text-danger">${jugador.Deuda}</p>):
+                            (jugador.Deuda  > 0) ? (<p className="text-success">${jugador.Deuda} (a favor)</p>): 
+                            (<p className="text-success">${jugador.Deuda}</p>)
+                            }
                         </td>
                         <td>
                             <button type="button" onClick={() => props.cobrarJugador(jugador)} className="btn btn-primary">

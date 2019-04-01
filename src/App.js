@@ -4,6 +4,7 @@ import Navigation from './components/navbar/Navigation';
 import './App.css';
 import PlantelPage from './pages/Equipo';
 import CobrarPage from './pages/Cobrar';
+import HomePage from './pages/Home';
 
 class App extends Component {
   render() {
@@ -16,9 +17,10 @@ class App extends Component {
               <div className="row">
                 <div className="col-md-12">
                   <Switch>
-                    <Redirect from="/" to="/plantel" exact />
+                    <Redirect from="/" to="/home" exact />
                     <Route path="/plantel" component={PlantelPage} />
                     <Route path="/cobrar" component={CobrarPage} />
+                    <Route path="/home" component={HomePage} />
                   </Switch>
                 </div>
               </div>

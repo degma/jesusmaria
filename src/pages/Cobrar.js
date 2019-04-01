@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Partidos from '../components/partido/ListaPartidos';
 import ListaJugadoresCobrar from '../components/cobros/ListaJugadoresCobrar';
 import FormCobrar from '../components/cobros/formCobrar';
+import MovJugador from '../components/cobros/MovJugador';
 
 class Cobrar extends Component {
     constructor(props) {
@@ -11,6 +12,7 @@ class Cobrar extends Component {
             partidoFlag: null,
             partidoSeleccionado: null,
             jugadorSeleccionado: null,
+            pagosJugador: [],
             plantel: []
         }
     }
@@ -24,8 +26,15 @@ class Cobrar extends Component {
             .then(data => this.setState({ plantel: data }));
     }
 
+    pagosJugadorHandler = (args) => {
+    }
+    
     cobrarJugadorHandler = (args) => {
         this.setState({ partidoFlag: 2, jugadorSeleccionado: args });
+        
+        fetch("http://127.0.0.1:8080/pagosjugador/" + args.id)
+            .then(response => response.json())
+            .then(data => this.setState({ pagosJugador: data }));
     }
 
     componentWillMount() {
@@ -79,9 +88,16 @@ class Cobrar extends Component {
                             </div>
                         ) : (
                                 this.state.partidoFlag === 2 ? (
-                                    <FormCobrar gCobro={this.onSubmitCobro} cancelarC={this.onCancelar} />
+                                    <div>
+                                        <div>
+                                            <FormCobrar partido={this.state.partidoSeleccionado} jugador={this.state.jugadorSeleccionado} gCobro={this.onSubmitCobro} cancelarC={this.onCancelar} />
+                                        </div>
+                                        <div>
+                                            <MovJugador movimientos={this.state.pagosJugador} />
+                                        </div>
+                                    </div>
                                 ) : (
-                                    <p>ok</p>
+                                        <p>ok</p>
                                     )
 
                             )

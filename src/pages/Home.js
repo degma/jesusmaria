@@ -14,11 +14,11 @@ class Home extends Component {
 
     componentWillMount() {
 
-        fetch("http://127.0.0.1:8080/recaudacion/")
+        fetch("https://strawberry-tart-29401.herokuapp.com/recaudacion/")
             .then(response => response.json())
             .then(data => this.setState({ recaudacion: data }));
 
-        fetch("http://127.0.0.1:8080/deudores/")
+        fetch("https://strawberry-tart-29401.herokuapp.com/deudores/")
             .then(response => response.json())
             .then(data => this.setState({ deudores: data }));
 

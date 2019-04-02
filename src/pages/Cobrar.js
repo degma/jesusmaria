@@ -21,7 +21,7 @@ class Cobrar extends Component {
         console.log(args)
         this.setState({ partidoFlag: 1, partidoSeleccionado: args });
         console.log(this.state.partidoSeleccionado);
-        fetch("http://127.0.0.1:8080/cobrosfecha/" + args.id_partido)
+        fetch("https://strawberry-tart-29401.herokuapp.com/cobrosfecha/" + args.id_partido)
             .then(response => response.json())
             .then(data => this.setState({ plantel: data }));
     }
@@ -32,14 +32,14 @@ class Cobrar extends Component {
     cobrarJugadorHandler = (args) => {
         this.setState({ partidoFlag: 2, jugadorSeleccionado: args });
         
-        fetch("http://127.0.0.1:8080/pagosjugador/" + args.id)
+        fetch("https://strawberry-tart-29401.herokuapp.com/pagosjugador/" + args.id)
             .then(response => response.json())
             .then(data => this.setState({ pagosJugador: data }));
     }
 
     componentWillMount() {
 
-        fetch("http://127.0.0.1:8080/partidos")
+        fetch("https://strawberry-tart-29401.herokuapp.com/partidos")
             .then(response => response.json())
             .then(data => this.setState({ partidos: data }));
 
@@ -49,7 +49,7 @@ class Cobrar extends Component {
     }
     onVolver = () => {
         this.setState({ partidoFlag: null })
-        fetch("http://127.0.0.1:8080/partidos")
+        fetch("https://strawberry-tart-29401.herokuapp.com/partidos")
             .then(response => response.json())
             .then(data => this.setState({ partidos: data }));
 
@@ -57,7 +57,7 @@ class Cobrar extends Component {
 
     onSubmitCobro = (args) => {
         console.log(this.state.jugadorSeleccionado)
-        fetch('http://localhost:8080/cobrar', {
+        fetch('https://strawberry-tart-29401.herokuapp.com/cobrar', {
             method: 'post',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({

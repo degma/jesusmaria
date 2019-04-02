@@ -38,22 +38,23 @@ class PlantelPage extends Component {
             method: 'post',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                nombre: args.nombre,
-                apellido: args.apellido,
-                apodo: args.apodo,
+                nombre: (args.nombre) ? (" ") : (args.nombre),
+                apellido: (args.apellido) ? (" ") : (args.apellido),
+                apodo: (args.apodo.length) ? (" ") : (args.apodo),
                 dni: +args.dni,
-                fecha_nac: args.fecha_nac,
+                fecha_nac: (args.fecha_nac.length) ? ('2019/01/01'):(args.fecha_nac),
                 nrosocio: +args.nrosocio,
                 celular: +args.celular,
                 camiseta: +args.camiseta,
-                posicion: args.posicion,
+                posicion: +args.posicion,
 
             })
         })
-        .then(this.setState({formJugadorVisible: false}))
-        .then(fetch("https://strawberry-tart-29401.herokuapp.com/jugadores")
-        .then(response => response.json())
-        .then(data => this.setState({ plantel: data })))
+        .then(this.setState({formJugadorVisible: false}));
+
+        fetch("https://strawberry-tart-29401.herokuapp.com/jugadores")
+            .then(response => response.json())
+            .then(data => this.setState({ plantel: data }));
 
         
     }

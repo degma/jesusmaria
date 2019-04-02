@@ -22,7 +22,7 @@ class PlantelPage extends Component {
     }
     eliminarJugador = (args) => {
 
-        fetch('http://localhost:8080/desjugador', {
+        fetch('https://strawberry-tart-29401.herokuapp.com/desjugador', {
             method: 'put',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -34,7 +34,7 @@ class PlantelPage extends Component {
     }
 
     guardarJugador = (args) => {
-        fetch('http://localhost:8080/jugador', {
+        fetch('https://strawberry-tart-29401.herokuapp.com/jugador', {
             method: 'post',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -51,7 +51,7 @@ class PlantelPage extends Component {
             })
         })
         .then(this.setState({formJugadorVisible: false}))
-        .then(fetch("http://localhost:8080/jugadores")
+        .then(fetch("https://strawberry-tart-29401.herokuapp.com/jugadores")
         .then(response => response.json())
         .then(data => this.setState({ plantel: data })))
 
@@ -59,7 +59,7 @@ class PlantelPage extends Component {
     }
 
     componentWillMount() {
-        fetch("http://localhost:8080/jugadores")
+        fetch("https://strawberry-tart-29401.herokuapp.com/jugadores")
             .then(response => response.json())
             .then(data => this.setState({ plantel: data }))
     }
